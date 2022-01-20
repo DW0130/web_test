@@ -1,0 +1,112 @@
+<link href="{{ url_for('static', filename='test.css') }}" rel="stylesheet"><!-- css 적용-->
+
+<script type="text/javascript" src="/static/test.js"></script><!--js 적용-->
+
+<!--body style="background-color: lightgray; text-align: center;">
+  <<div style="background-color: lightskyblue;">
+  <a class="fontstyle">asadada</a>
+  <a class="fontstyle">asadada</a>
+  <a class="fontstyle">asadada</a>
+  <a class="fontstyle">asadada</a>
+  <br>
+  </div>
+
+  <div>
+  <button id="btn" style="background-color: lightgreen;" class="fontstyle" onclick="search()" >asaddd</button>
+  <br>
+  <input class="fontstyle" type='text'>
+  <br>
+  <input class="fontstyle" type='time'>
+  <br>
+  <input class="fontstyle" type='date'>
+  <br>
+  <input id="in" class="fontstyle" type='number'>
+  <br>
+  <input id="in_1" class="fontstyle" type='number'>
+  <br>
+  <input id="in_2" class="fontstyle" type='number'>
+  </div>
+
+  <div style="margin-top: 2%; height: 500px; width: 500px; background-color: red;" >
+    <div></div>
+  <div style="margin-left: 5%; margin-top: 5%; height: 450px; width: 450px; background-color: orange;">
+  <div style="margin-left: 25px; margin-top: 5%;  height: 400px; width: 400px; background-color: yellow;">
+  <div style="margin-left: 25px; margin-top: 5%;  height: 350px; width: 350px; background-color: green;">
+  <div style="margin-left: 25px; margin-top: 25px;  height: 300px; width: 300px; background-color: blue;">
+  <div style="margin-left: 30px; margin-top: 30px;  height: 250px; width: 250px; background-color: purple;">>
+  </div>>
+  <div style="background-color:white; height: 500px; width: 1500px; margin-top: 50px; left: 50%; margin-left: -750px; position: absolute;"> #페이스북화면
+    
+    <p style="font-size: 30px; margin-top: 10px; margin-bottom: auto;"> Log in to Facebook</p>
+
+  <div style="height: 15px;"></div>
+
+    <input id="ID" type="text" style="font-size: 15px; width: 300px; margin-bottom: auto;" placeholder="Email address or phone number">
+    <div style="height: 15px;"></div>
+    <input id="PW" type="password" style="font-size: 15px; width: 300px;" placeholder="Password">
+    
+    <div style="height: 15px;"></div>
+
+    <button onclick="login()" style="background:rgb(0, 68, 255); color: white; font-size: 25px; width: 300px; height: 50px; " >
+      login
+    </button>
+
+    <div style="height: 15px;"></div>
+
+    <button onclick="PW_Recover()" style="background-color: lightgray; border: black; font-size: 20px; width: 300px;">
+      Recover Your Account
+    </button>
+    
+  <div style="height: 15px;"></div>
+
+    <button onclick="NEW_User()" style="background: white; border: white; color: rgb(32, 83, 178); font-size: 20px; width: 300px;">
+      Sign up for Facebook
+    </button>
+  
+  </div>
+
+  <div style="background-color: white; height: 500px; width: 300px;  left: 50%; margin-left: -150px; position: absolute;"> #모바일 네이버
+    <p style="color: green; font-size: 30px; font-weight: bolder; margin-top: 50px; margin-bottom: auto;"> NAVER</p>
+    <br>
+
+    <input id="ID" type="text" style="font-size: 20px; width: 200px; height: 25px;">
+
+    <br>
+    <input id="PW" type="password" style="font-size: 20px; width: 200px; height: 25px;">
+
+    <br>
+    <button onclick="login()" style="background-color: green; color: white; font-size: 20px; width: 200px; height: 50px;">
+      Sign in
+    </button>
+  </div>
+
+</body-->
+
+<body style="background-color:white;"!--네이버메인화면--> 
+
+  <div>
+    <a style="color: green; font-weight: bolder; font-size: 40px;"> NAVER</a>
+    <input type="text" style="font-size: 20px; color: black; margin-left: 10%;">
+    <button onclick="scarch_1()" style="background-color: green; color: white; font-size: 20px;">검색</button>
+  </div>
+
+  <div style="margin-top: 20px;">
+  <button onclick="location.href='/sign_up'" id="mail" class="button_style">메일</button>
+  <button onclick="cafe_bt()" class="button_style">카페</button>
+  <button onclick="blog_bt()" class="button_style">블로그</button>
+  <button onclick="know_bt()" class="button_style">지식N</button>
+  <button onclick="shop_bt()" class="button_style">쇼핑</button>
+  <button onclick="pay_bt()" class="button_style">PAY</button>
+
+  <input id="N_UserID" type="text" class="login_1_style" style="color: black;" >
+  <br>
+  <input id="N_UserPW" type="password" class="login_1_style" style="color: black;">
+  <br>
+  <br>
+  <button onclick="login_test()" class="login_1_style" style="background-color: green; color: white;"> Naver 로그인</button>
+  <br>
+  <button onclick="location.href='sign_up'" class="login_2_style" style="background-color: white; border-color: white; color: black; margin-top: 10px;">회원가입</button>
+  
+  </div>
+
+</body>

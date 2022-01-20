@@ -1,0 +1,41 @@
+.fontstyle{
+    font-size: 40px; 
+    color: rgb(107, 107, 107);
+}
+.borderstyle{
+    height: 450px; 
+    width: 450px; 
+    border: 1px solid red;
+}
+
+.button_style{
+    background-color: white;
+    border: 1px solid white;
+    color: rgb(29, 170, 29);
+    font-size: 20px;
+}
+
+.login_1_style{
+    float: right;
+    margin-right: 200px;
+    width: 200px;
+    height: 25px;
+    font-size: 15px; 
+}
+
+.login_2_style{
+    float: right;
+    margin-right: -200px;
+    width: 100px;
+    height: 25px;
+    font-size: 15px; 
+}
+
+.NEW_User{
+    width: 100px;
+    height: 25px;
+    font-size: 15px;
+    position: absolute;
+    background-color: lightgray;
+    color: black;
+}

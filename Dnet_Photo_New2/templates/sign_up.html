@@ -1,0 +1,31 @@
+<link href="{{ url_for('static', filename='test.css') }}" rel="stylesheet"><!-- css 적용-->
+
+<script type="text/javascript" src="/static/test.js"></script><!--js 적용-->
+
+<body style="background-color: lightgray; text-align: center;" >
+    <p style="font-size: 40px; font-weight: bolder;color: green;">NAVER 회원가입</p>
+    <div style="background-color: white; width: 500px; height: 300px; position: absolute; left: 50%; margin-left: -250px;">
+
+        
+    <a class="NEW_user" style="margin-top: 40px; margin-left: -140px;">아이디</a>
+    <input id="NEW_User_ID" type="text" class="NEW_User" style="margin-top: 40px; margin-left: 10px;" placeholder="ID">
+    
+    <br>
+    <a class="NEW_user" style="margin-top: 50px; margin-left: -140px;">비밀번호</a>
+    <input id="NEW_User_PW" type="password" class="NEW_User" style="margin-top: 50px; margin-left: 10px;" placeholder="PW">
+    
+    <br>
+    <a class="NEW_user" style="margin-top: 60px; margin-left: -140px;">이름</a>
+    <input id="NAME" type="text" class="NEW_User" style="margin-top: 60px; margin-left: 10px;">
+    
+    <br>
+    <a class="NEW_user" style="margin-top: 70px; margin-left: -140px;">전화번호</a>
+    <input id="Phone_Number" type="number" class="NEW_User" style="margin-top: 70px; margin-left: 10px;">
+
+    <br>
+    <button onclick="location.href='/login'; Sign_up()" class="NEW_user" style="margin-top: 110px; margin-left: -140px;">가입하기</button>
+    <button onclick="location.href='/login'" class="NEW_user" style="margin-top: 110px; margin-left: 10px;">취소</button>
+
+
+    </div>
+</body>
