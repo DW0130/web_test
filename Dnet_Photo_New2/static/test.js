@@ -78,31 +78,13 @@ function login_test(){
     search_test(N_ID, N_PW)
 }
 
-function mail_bt(){
-    
-    console.log("mail_버튼눌림")
-}
-
-function cafe_bt(){
-    
-    console.log("cafe_버튼눌림")
-}
-function blog_bt(){
-    
-    console.log("blog_버튼눌림")
-}
-function know_bt(){
-    
-    console.log("know_버튼눌림")
-}
-function shop_bt(){
-    
-    console.log("shop_버튼눌림")
-}
-function pay_bt(){
-    
-    console.log("pay_버튼눌림")
-}
+function mail_bt(){console.log("mail_버튼눌림")}
+function cafe_bt(){console.log("cafe_버튼눌림")}
+function blog_bt(){console.log("blog_버튼눌림")}
+function know_bt(){console.log("know_버튼눌림")}
+function shop_bt(){console.log("shop_버튼눌림")}
+function pay_bt(){console.log("pay_버튼눌림")}
+function NTv_bt(){console.log("NTv_버튼눌림")}
 
 function Sign_up(){
 

@@ -33,13 +33,21 @@ def shutdown_server():
 def main():
     return render_template('login.html')
 
-@app.route("/sign_up") #새로운 화면 만들기
+@app.route("/sign_up") #회원가입화면
 def sign_up():
     return render_template('sign_up.html')
 
-@app.route("/login") #새로운 화면 만들기
+@app.route("/login") #메인화면
 def login():
     return render_template('login.html')
+
+@app.route("/Serch_ID") #메인화면
+def Serch_ID():
+    return render_template('Serch_ID.html')
+
+@app.route("/Serch_PW") #메인화면
+def Serch_PW():
+    return render_template('Serch_PW.html')
 
 
 @app.route("/popup")
@@ -194,7 +202,7 @@ def testpost(): #연습용Post
        
 newid = ''
 newpw = ''
-@app.route("/Signup_post",methods=['POST']) #post방식으로 testpost_1주소(함수)로가서 진행
+@app.route("/Signup_post",methods=['POST']) #회원가입POST
 def Signup_post(): #연습용Post
     global newid
     global newpw
@@ -208,14 +216,12 @@ def Signup_post(): #연습용Post
         return json.dumps ("{'data' : '회원가입이 되었습니다.'}")
 
 
-@app.route("/testpost_1",methods=['POST']) #post방식으로 testpost_1주소(함수)로가서 진행
+@app.route("/testpost_1",methods=['POST']) #NAVER로그인POST
 def testpost_1(): #연습용Post
     global newid
     global newpw
     if request.method == 'POST':
         i = request.get_json()
-        Realid = i.get('ID')
-        Realpw = i.get('PW')
 
         if newid == i.get('ID') and newpw == i.get('PW'):
             return json.dumps("{'data' : 로그인 되었습니다.}")

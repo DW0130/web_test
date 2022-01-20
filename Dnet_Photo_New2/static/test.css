@@ -17,18 +17,17 @@
 
 .login_1_style{
     float: right;
-    margin-right: 200px;
-    width: 200px;
+    margin-right: 300px;
+    width: 240px;
     height: 25px;
     font-size: 15px; 
 }
 
 .login_2_style{
     float: right;
-    margin-right: -200px;
-    width: 100px;
+    width: 80px;
     height: 25px;
-    font-size: 15px; 
+    font-size: 10px; 
 }
 
 .NEW_User{

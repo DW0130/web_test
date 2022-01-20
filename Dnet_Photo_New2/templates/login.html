@@ -87,26 +87,30 @@
   <div>
     <a style="color: green; font-weight: bolder; font-size: 40px;"> NAVER</a>
     <input type="text" style="font-size: 20px; color: black; margin-left: 10%;">
-    <button onclick="scarch_1()" style="background-color: green; color: white; font-size: 20px;">검색</button>
+    <button style="background-color: green; color: white; font-size: 20px;">검색</button>
   </div>
 
   <div style="margin-top: 20px;">
-  <button onclick="location.href='/sign_up'" id="mail" class="button_style">메일</button>
+  <button onclick="mail_bt()" id="mail" class="button_style">메일</button>
   <button onclick="cafe_bt()" class="button_style">카페</button>
   <button onclick="blog_bt()" class="button_style">블로그</button>
   <button onclick="know_bt()" class="button_style">지식N</button>
   <button onclick="shop_bt()" class="button_style">쇼핑</button>
   <button onclick="pay_bt()" class="button_style">PAY</button>
+  <button onclick="NTv_bt()" class="button_style">NTv</button>
+  </div>
 
+  <div style="margin-top: 20px;">
   <input id="N_UserID" type="text" class="login_1_style" style="color: black;" >
   <br>
-  <input id="N_UserPW" type="password" class="login_1_style" style="color: black;">
+  <input id="N_UserPW" type="password" class="login_1_style" style="color: black; margin-top: 5px; margin-right: -240px;">
   <br>
   <br>
   <button onclick="login_test()" class="login_1_style" style="background-color: green; color: white;"> Naver 로그인</button>
   <br>
-  <button onclick="location.href='sign_up'" class="login_2_style" style="background-color: white; border-color: white; color: black; margin-top: 10px;">회원가입</button>
+  <button onclick="location.href='Serch_ID'" class="login_2_style" style="background-color: white; border-color: white; color: black; margin-top: 10px; margin-right: -80px;">아이디</button>
+  <button onclick="location.href='Serch_PW'" class="login_2_style" style="background-color: white; border-color: white; color: black; margin-top: 10px; margin-right: -160px;">비밀번호 찾기</button>
+  <button onclick="location.href='sign_up'" class="login_2_style" style="background-color: white; border-color: white; color: black; margin-top: 10px; margin-right: -240px;">회원가입</button>
   
   </div>
-
 </body>
