@@ -275,6 +275,7 @@ def dbsearch():
 
 @app.route("/dbsearch_1",methods=['POST'])
 def dbsearch_1():
+
     if request.method == 'POST':
         i = request.get_json()
         sql_ID = i.get('ID') #a
@@ -285,16 +286,51 @@ def dbsearch_1():
         data = json.dumps(sql.fetchall(),default=str)
         return data
         
+
+
+
+
+# @app.route("/p2",methods=['POST'])
+# def realmain():
+    num=""
+    num2=""
+    if request.method == 'POST':
+        num = request.form.get('num')
+        num2 = request.form.get('num2')
+        result = hashlib.sha256(num2.encode()).hexdigest()
+        if (num == "dnet" and num2 == "admin") or (num =='a' and result == str2):
+            session['login'] = 1
+            return redirect('/list')
+        else:
+            flash("아이디 또는 비밀번호가 일치하지 않습니다")
+            return render_template('login.html')
+
+
+
+
+
+
+
+
+        
 @app.route("/Serch_User",methods=['POST'])
 def Serch_User():
     if request.method == 'POST':
         i = request.get_json()
         sql_Phone = i.get('Serch_Phone')
+
         DB = pymysql.connect(host='192.168.0.43',user='root',password='1234',db='test_naver',charset='utf8')  
         sql = DB.cursor()
         sql.execute("select * from test_naver.test_table_naver where Phone='"+sql_Phone+"'")
         data = json.dumps(sql.fetchall(),default=str)
         return data
+
+
+
+
+
+
+
 
 
 

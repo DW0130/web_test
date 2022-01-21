@@ -77,10 +77,10 @@ function login_test(){
 
     // search_test(N_ID, N_PW)
 
-    var xhr = new XMLHttpRequest(); // XMLHttpRequest = 서버와 상호작용
-    xhr.open("POST", "/dbsearch_1", true); // 서버로부터 데이터 받아오기위한 객체 "open()함수를 통해 요청초기화"
-    xhr.setRequestHeader('Content-Type', 'application/json'); //HTTP요청헤더 값 설정  "serRequestheader()함수설정"
-    xhr.send(JSON.stringify({   // send()함수를 통해 요청전송 "setRequestHeader() 함수로 JSON이라고 설정하고, send() 함수로 서버에 보내는 데이터를 JSON 문자열변경"
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/dbsearch_1", true);
+    xhr.setRequestHeader('Content-Type', 'application/json'); 
+    xhr.send(JSON.stringify({ 
 
         ID : N_ID,
         PW : N_PW
@@ -88,14 +88,38 @@ function login_test(){
     }));
     xhr.onload = function() {
     var data = JSON.parse(this.responseText)
-    console.log(data); 
+
+    if (data[0][0] == N_ID && data[0][1] == N_PW){
+
+        Swal.fire(
+            '로그인에 성공하였습니다.',
+            'ID : ' + (data[0][0]) + 'Name: ' + (data[0][2]),
+            'success'
+        )
+    }else{
+        Swal.fire(
+            '로그인에 실패하였습니다.',
+            '아이디 또는 비밀번호를가 일치하지 않습니다.',
+            'error'
+        )
+
+    }
+
 
     }
 
 }
 
 function mail_bt(){console.log("mail_버튼눌림")}
-function cafe_bt(){console.log("cafe_버튼눌림")}
+
+function cafe_bt(){
+    Swal.fire(
+        'Good job!',
+        'You clicked the button!',
+        'success'
+      )
+}
+
 function blog_bt(){console.log("blog_버튼눌림")}
 function know_bt(){console.log("know_버튼눌림")}
 function shop_bt(){console.log("shop_버튼눌림")}
