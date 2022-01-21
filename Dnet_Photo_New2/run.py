@@ -41,11 +41,11 @@ def sign_up():
 def login():
     return render_template('login.html')
 
-@app.route("/Serch_ID") #메인화면
+@app.route("/Serch_ID") #ID찾기
 def Serch_ID():
     return render_template('Serch_ID.html')
 
-@app.route("/Serch_PW") #메인화면
+@app.route("/Serch_PW") #PW찾기
 def Serch_PW():
     return render_template('Serch_PW.html')
 
@@ -209,11 +209,41 @@ def Signup_post(): #연습용Post
 
     if request.method == 'POST':
         i = request.get_json()
-        recvdata = i.get('numder')
         newid = i.get('New_ID')
         newpw = i.get('New_PW')
+        newname = i.get('New_NAME')
+        newphone = i.get('New_Phone')
+        DB = pymysql.connect(host='192.168.0.43',user='root',password='1234',db='test',charset='utf8')  
+        cur = DB.cursor()
+        sql = "INSERT IGNORE INTO test.testtable (name,phone,id,pw)  VALUES (%s, %s, %s, %s)"
 
+        val = (newid,newpw,newname,newphone)
+
+        cur.execute(sql, val)
+        DB.commit()
         return json.dumps ("{'data' : '회원가입이 되었습니다.'}")
+
+
+@app.route("/Signup_post_1",methods=['POST']) #회원가입POST
+def Signup_post_1(): #연습용Post
+    global newid
+    global newpw
+
+    if request.method == 'POST': # POST방식으로 요구
+        i = request.get_json() # json타입으로 정보가져와 i에 대입
+        newid = i.get('New_ID')
+        newpw = i.get('New_PW')
+        newname = i.get('New_NAME')
+        newphone = i.get('New_Phone')
+        DB = pymysql.connect(host='192.168.0.43',user='root',password='1234',db='test_naver',charset='utf8')  
+        cur = DB.cursor()
+        sql = "INSERT IGNORE INTO test_naver.test_table_naver (ID,PW,Name,Phone)  VALUES (%s, %s, %s, %s)"
+
+        val = (newid,newpw,newname,newphone)
+
+        cur.execute(sql, val)
+        DB.commit()
+        return json.dumps ("{'data' : 'test_회원가입이 되었습니다.'}")
 
 
 @app.route("/testpost_1",methods=['POST']) #NAVER로그인POST
@@ -227,6 +257,45 @@ def testpost_1(): #연습용Post
             return json.dumps("{'data' : 로그인 되었습니다.}")
         else:
             return json.dumps("{'data' : 비밀번호가 틀렸습니다.}")
+
+
+@app.route("/dbsearch",methods=['POST'])
+def dbsearch():
+    if request.method == 'POST':
+        i = request.get_json()
+        idd = i.get('ID') #a
+        pw = i.get('PW') #a2
+        DB = pymysql.connect(host='192.168.0.43',user='root',password='1234',db='test',charset='utf8')  
+        sql = DB.cursor()
+        sql.execute("select * from test.testtable where id='"+idd+"' and pw='"+pw+"'")
+        data = json.dumps(sql.fetchall(),default=str)
+        return data
+# select * from  test.testtable where id= 'a' and pw='a2'
+
+
+@app.route("/dbsearch_1",methods=['POST'])
+def dbsearch_1():
+    if request.method == 'POST':
+        i = request.get_json()
+        sql_ID = i.get('ID') #a
+        sql_PW = i.get('PW') #a2
+        DB = pymysql.connect(host='192.168.0.43',user='root',password='1234',db='test_naver',charset='utf8')  
+        sql = DB.cursor()
+        sql.execute("select * from test_naver.test_table_naver where id='"+sql_ID+"' and pw='"+sql_PW+"'")
+        data = json.dumps(sql.fetchall(),default=str)
+        return data
+        
+@app.route("/Serch_User",methods=['POST'])
+def Serch_User():
+    if request.method == 'POST':
+        i = request.get_json()
+        sql_Phone = i.get('Serch_Phone')
+        DB = pymysql.connect(host='192.168.0.43',user='root',password='1234',db='test_naver',charset='utf8')  
+        sql = DB.cursor()
+        sql.execute("select * from test_naver.test_table_naver where Phone='"+sql_Phone+"'")
+        data = json.dumps(sql.fetchall(),default=str)
+        return data
+
 
 
 

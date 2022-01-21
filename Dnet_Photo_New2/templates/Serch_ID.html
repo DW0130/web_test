@@ -1,1 +1,19 @@
-아이디찾기
+<link href="{{ url_for('static', filename='test.css') }}" rel="stylesheet"><!-- css 적용-->
+
+<script type="text/javascript" src="/static/test.js"></script><!--js 적용-->
+
+
+<body style="background-color: lightgray; text-align: center;">
+    <div style="background-color: white; width: 500px; height: 500px; position: absolute; left: 50%; margin-left: -250px; ">
+       <p style="color: green; font-size: 30px; ">계정찾기</p>
+
+       <p class="NEW_User" style="margin-left: 60px; margin-top: 10px; background-color: white; color: black;">전화번호</p>
+       <input id="User_Phone"" type="number" style="margin-left: 80px; margin-top: 10px;">
+       <button onclick="Serch_User()">찾기</button>
+    </div>
+
+    <div>
+        <button onclick="location.href='/login'" class="NEW_User" style="margin-left: 60px; margin-top: 400px; background-color: white; color: black;">뒤로가기</button>
+    </div>
+    
+</body>

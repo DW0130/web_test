@@ -75,7 +75,23 @@ function login_test(){
     console.log(N_ID)
     console.log(N_PW)
 
-    search_test(N_ID, N_PW)
+    // search_test(N_ID, N_PW)
+
+    var xhr = new XMLHttpRequest(); // XMLHttpRequest = 서버와 상호작용
+    xhr.open("POST", "/dbsearch_1", true); // 서버로부터 데이터 받아오기위한 객체 "open()함수를 통해 요청초기화"
+    xhr.setRequestHeader('Content-Type', 'application/json'); //HTTP요청헤더 값 설정  "serRequestheader()함수설정"
+    xhr.send(JSON.stringify({   // send()함수를 통해 요청전송 "setRequestHeader() 함수로 JSON이라고 설정하고, send() 함수로 서버에 보내는 데이터를 JSON 문자열변경"
+
+        ID : N_ID,
+        PW : N_PW
+
+    }));
+    xhr.onload = function() {
+    var data = JSON.parse(this.responseText)
+    console.log(data); 
+
+    }
+
 }
 
 function mail_bt(){console.log("mail_버튼눌림")}
@@ -109,7 +125,7 @@ function search_Signup(New_UserID, New_UserPW, New_UserNAME, New_User_Phone){
     var New_Phone = New_User_Phone
 
     var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/Signup_post", true);
+    xhr.open("POST", "/Signup_post_1", true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify({
 
@@ -122,8 +138,40 @@ function search_Signup(New_UserID, New_UserPW, New_UserNAME, New_User_Phone){
     xhr.onload = function() {
     var data = JSON.parse(this.responseText)
     console.log(data);
+    }
+
+}
 
 
+function Serch_User(){
+
+    var P_Number = document.getElementById('User_Phone').value
+
+    console.log(P_Number)
+
+    Serch_User1(P_Number)
+}
+
+
+
+function Serch_User1(P_Number){
+
+    var Serch_Phone = P_Number
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/Serch_User", true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify({
+
+        Serch_Phone : P_Number
+
+    }));
+    xhr.onload = function() {
+    var data = JSON.parse(this.responseText)
+    console.log("아이디 : ",data[0][0]); // SQL파일기준
+    console.log("비밀번호 : ",data[0][1]);
+    console.log("이름 : ",data[0][2]);
+    console.log("전화번호 : ",data[0][3]);
     }
 
 }
