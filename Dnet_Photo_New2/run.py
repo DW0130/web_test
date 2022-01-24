@@ -28,18 +28,19 @@ def shutdown_server():
         raise RuntimeError('Not running with the Werkzeug Server')
     func()
 
+# 화면 슬라이스 생성
 
 @app.route("/")
 def main():
-    return render_template('login.html')
+    return render_template('login_Before.html')
 
 @app.route("/sign_up") #회원가입화면
 def sign_up():
     return render_template('sign_up.html')
 
-@app.route("/login") #메인화면
-def login():
-    return render_template('login.html')
+@app.route("/login_Before") #메인화면
+def login_Before():
+    return render_template('login_Before.html')
 
 @app.route("/Serch_ID") #ID찾기
 def Serch_ID():
@@ -48,6 +49,14 @@ def Serch_ID():
 @app.route("/Serch_PW") #PW찾기
 def Serch_PW():
     return render_template('Serch_PW.html')
+
+@app.route("/blog") #blog화면
+def blog():
+    return render_template('blog.html')
+    
+@app.route("/login_after") #blog화면
+def login_after():
+    return render_template('login_after.html')
 
 
 @app.route("/popup")
@@ -282,35 +291,10 @@ def dbsearch_1():
         sql_PW = i.get('PW') #a2
         DB = pymysql.connect(host='192.168.0.43',user='root',password='1234',db='test_naver',charset='utf8')  
         sql = DB.cursor()
-        sql.execute("select * from test_naver.test_table_naver where id='"+sql_ID+"' and pw='"+sql_PW+"'")
+        sql.execute("select * from test_naver.test_table_naver where ID='"+sql_ID+"' and PW='"+sql_PW+"'")
         data = json.dumps(sql.fetchall(),default=str)
         return data
         
-
-
-
-
-# @app.route("/p2",methods=['POST'])
-# def realmain():
-    num=""
-    num2=""
-    if request.method == 'POST':
-        num = request.form.get('num')
-        num2 = request.form.get('num2')
-        result = hashlib.sha256(num2.encode()).hexdigest()
-        if (num == "dnet" and num2 == "admin") or (num =='a' and result == str2):
-            session['login'] = 1
-            return redirect('/list')
-        else:
-            flash("아이디 또는 비밀번호가 일치하지 않습니다")
-            return render_template('login.html')
-
-
-
-
-
-
-
 
         
 @app.route("/Serch_User",methods=['POST'])
@@ -327,12 +311,39 @@ def Serch_User():
 
 
 
+@app.route("/text_Update",methods=['POST']) #블로그 글 업로드
+def text_Update():
+    global Title
+    global Notice
+
+    if request.method == 'POST': # POST방식으로 요구
+        i = request.get_json() # json타입으로 정보가져와 i에 대입
+        Title = i.get('Title')
+        Notice = i.get('Contents')
+        DB = pymysql.connect(host='192.168.0.43',user='root',password='1234',db='test_naver',charset='utf8')  
+        cur = DB.cursor()
+        sql = "INSERT IGNORE INTO test_naver.test_table_blog (Title, Notice)  VALUES (%s, %s)"
+
+        val = (Title, Notice)
+
+        cur.execute(sql, val)
+        DB.commit()
+        return json.dumps ("{'data' : '게시글이 올라갔습니다.'}")
 
 
+@app.route("/Serch_Title",methods=['POST']) # 블로그 제목 찾기
+def Serch_Title():
+    if request.method == 'POST':
+        i = request.get_json()
+        sql_Title = i.get('ST')
 
-
-
-
+        DB = pymysql.connect(host='192.168.0.43',user='root',password='1234',db='test_naver',charset='utf8')  
+        sql = DB.cursor()
+        sql_1 = DB.cursor()
+        sql.execute("select * from test_naver.test_table_blog where Title='"+sql_Title+"'")
+        sql.execute("SELECT * FROM test_table_blog WHERE Title LIKE'%"+sql_Title+"%'") # 특정단어 검색용도이나 도저히 사용 못하겠음
+        data = json.dumps(sql.fetchall(),default=str)
+        return data
 
 
 if __name__ == '__main__':

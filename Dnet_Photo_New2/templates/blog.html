@@ -1,0 +1,25 @@
+블로그화면
+
+<link href="{{ url_for('static', filename='test.css') }}" rel="stylesheet"><!-- css 적용-->
+
+<script type="text/javascript" src="/static/test.js"></script><!--js 적용-->
+
+
+
+<body style="background-color: lightgray; text-align: center;">
+
+    <div style="background-color: white; width: 500px; height: 600px; left: 50%; margin-left: -250px; position: absolute;">
+    <p style="font-size: 10px;"> 제목을 입력하세요</p>
+    <input id="Limiting_title_text" type="text" maxlength="30" class="blog_title_textbox">
+    <br>
+    <p style="margin-left: 280px; font-size: 10px;"> 180자 내외로 작성해주세요</p>
+    <input id="Limiting_text" type="text" maxlength="180" class="blog_textbox">
+    <br>
+    <button onclick="text_Update()" style="margin-top: 10px; width: 100px; height: 40px;" >작성하기</button>
+    <button onclick="location.href='/login_Before'" style="margin-top: 10px; width: 100px; height: 40px;" >뒤로가기</button>
+    
+    <br>
+    <input id="Title_Serch" type="text" maxlength="30" class="blog_title_textbox" style="margin-top: 10px;">
+    <button onclick="Title_Serch()" style="margin-top: 10px; width: 100px; height: 40px;" >검색</button>
+    </div>
+</body>

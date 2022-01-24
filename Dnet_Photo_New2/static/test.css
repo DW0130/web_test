@@ -38,3 +38,21 @@
     background-color: lightgray;
     color: black;
 }
+
+.blog_textbox{
+    background-color: white;
+    border-color: black;
+    width: 400px;
+    height: 300px;
+    vertical-align: top;
+    text-align: left;
+}
+
+.blog_title_textbox{
+    background-color: white;
+    border-color: black;
+    width: 400px;
+    height: 30px;
+    vertical-align: top;
+    text-align: left;
+}

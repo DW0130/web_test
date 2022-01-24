@@ -1,0 +1,29 @@
+
+<link href="{{ url_for('static', filename='test.css') }}" rel="stylesheet"><!-- css 적용-->
+
+<script type="text/javascript" src="/static/test.js"></script><!--js 적용-->
+<script type="text/javascript" src="/static/sweetalart2.js"></script><!--js 적용-->
+
+
+
+<body style="background-color:white;"!--네이버메인화면--> 
+
+    <div>
+      <a style="color: green; font-weight: bolder; font-size: 40px;"> NAVER</a>
+      <input type="text" style="font-size: 20px; color: black; margin-left: 10%;">
+      <button style="background-color: green; color: white; font-size: 20px;">검색</button>
+    </div>
+  
+    <div style="margin-top: 20px;">
+    <button onclick="mail_bt()" id="mail" class="button_style">메일</button>
+    <button onclick="cafe_bt()" class="button_style">카페</button>
+    <button onclick="location.href='blog'" class="button_style">블로그</button>
+    <button onclick="know_bt()" class="button_style">지식N</button>
+    <button onclick="shop_bt()" class="button_style">쇼핑</button>
+    <button onclick="pay_bt()" class="button_style">PAY</button>
+    <button onclick="NTv_bt()" class="button_style">NTv</button>
+    </div>
+  
+    <div style="margin-top: 20px;">
+    </div>
+  </body>
