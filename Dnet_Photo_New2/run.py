@@ -30,7 +30,24 @@ def shutdown_server():
 
 # 화면 슬라이스 생성
 
-@app.route("/")
+@app.route("/") # 프로그램 시작시 먼저 실행
+def main():
+    return render_template('test_login.html')
+
+@app.route("/test_Sign") # 회원가입
+def test_Sign():
+    return render_template('test_Sign.html')
+    
+@app.route("/test_Serch_User") # 계정찾기
+def test_Serch_User():
+    return render_template('test_Serch_User.html')
+
+@app.route("/test_writing") # 계정찾기
+def test_writing():
+    return render_template('test_writing.html')
+
+'''
+@app.route("/") # 프로그램 시작시 먼저 실행
 def main():
     return render_template('login_Before.html')
 
@@ -57,8 +74,9 @@ def blog():
 @app.route("/login_after") #blog화면
 def login_after():
     return render_template('login_after.html')
+'''
 
-
+'''
 @app.route("/popup")
 def popup():
     return render_template('popup.html')
@@ -191,9 +209,9 @@ def excelexport():
             DB.close()
             wb.close()
         return '', 204
+'''
 
-
-
+'''
 @app.route("/testpost",methods=['POST'])
 def testpost(): #연습용Post
     Realid = 1234
@@ -344,6 +362,90 @@ def Serch_Title():
         sql.execute("SELECT * FROM test_table_blog WHERE Title LIKE'%"+sql_Title+"%'") # 특정단어 검색용도이나 도저히 사용 못하겠음
         data = json.dumps(sql.fetchall(),default=str)
         return data
+'''
+
+
+@app.route("/Login_DB",methods=['POST']) # 로그인
+def Login_DB():
+    if request.method == 'POST': # POST방식으로 들어온 데이터가 있다면 다음과 같이 실행하라
+        i = request.get_json()
+        UserID = i.get('ID')
+        UserPW = i.get('PW')
+
+        DB = pymysql.connect(host='192.168.0.43',user='root',password='1234',db='DW_test',charset='utf8')  
+        sql = DB.cursor()
+        sql.execute("select * from DW_test.test where ID='"+UserID+"' and PW='"+UserPW+"'")
+        data = json.dumps(sql.fetchall(),default=str)
+        return data
+
+
+@app.route("/Sign_DB",methods=['POST']) # 회원가입
+def Sign_DB(): #연습용Post
+
+    if request.method == 'POST': # POST방식으로 요구
+        i = request.get_json() # json타입으로 정보가져와 i에 대입
+        New_ID = i.get('ID')
+        New_PW = i.get('PW')
+        New_Name = i.get('Name')
+        New_Phone = i.get('Phone')
+        DB = pymysql.connect(host='192.168.0.43',user='root',password='1234',db='DW_test',charset='utf8')  
+        cur = DB.cursor()
+        sql = "INSERT IGNORE INTO DW_test.test (ID,PW,Name,Phone)  VALUES (%s, %s, %s, %s)"
+
+        val = (New_ID, New_PW, New_Name, New_Phone)
+
+        cur.execute(sql, val)
+        DB.commit()
+        return json.dumps ("{'회원가입이 되었습니다.'}")
+
+
+@app.route("/User_DB",methods=['POST']) # 계정찾기
+def User_DB():
+    if request.method == 'POST':
+        i = request.get_json()
+        Name = i.get('Name')
+        Phone = i.get('Phone')
+
+        DB = pymysql.connect(host='192.168.0.43',user='root',password='1234',db='DW_test',charset='utf8')  
+        sql = DB.cursor()
+        sql.execute("select * from DW_test.test where Name='"+Name+"' and Phone='"+Phone+"'")
+        data = json.dumps(sql.fetchall(),default=str)
+        return data
+
+
+@app.route("/Notice_DB",methods=['POST']) # 글 업로드
+def Notice_DB():
+
+    if request.method == 'POST': # POST방식으로 요구
+        i = request.get_json() # json타입으로 정보가져와 i에 대입
+        Title = i.get('Title')
+        Notice = i.get('Main_Text')
+        print(Notice)
+        DB = pymysql.connect(host='192.168.0.43',user='root',password='1234',db='DW_test',charset='utf8')  
+        cur = DB.cursor()
+        sql = "INSERT IGNORE INTO DW_test.Notice (Title, Notice)  VALUES (%s, %s)"
+
+        val = (Title, Notice)
+
+        cur.execute(sql, val)
+        DB.commit()
+        return json.dumps ("{'data' : '게시글이 올라갔습니다.'}")
+
+
+@app.route("/Title_DB",methods=['POST']) # 제목 찾기
+def Title_DB():
+    if request.method == 'POST':
+        i = request.get_json()
+        sql_Title = i.get('Title')
+
+        DB = pymysql.connect(host='192.168.0.43',user='root',password='1234',db='DW_test',charset='utf8')  
+        sql = DB.cursor()
+        sql.execute("select * from DW_test.Notice where Title='"+sql_Title+"'")
+        sql.execute("SELECT * FROM Notice WHERE Title LIKE'%"+sql_Title+"%'") # 특정단어 검색용도이나 도저히 사용 못하겠음
+        data = json.dumps(sql.fetchall(),default=str)
+        return data
+
+
 
 
 if __name__ == '__main__':

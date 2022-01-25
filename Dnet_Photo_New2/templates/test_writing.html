@@ -1,0 +1,26 @@
+<link href="{{ url_for('static', filename='test_login.css') }}" rel="stylesheet"><!-- css 적용-->
+
+<script type="text/javascript" src="/static/test_login.js"></script><!--js 적용-->
+<script type="text/javascript" src="/static/sweetalart2.js"></script><!--js 적용-->
+
+
+<head>
+    <title>글쓰기</title>
+</head>
+
+<body style="position: absolute; left: 50%; margin-left: -150; text-align: center;">
+    
+    <p>Write a post</p>
+    <tr><td>제목</td></tr> <input type="text" id="Title" maxlength="15">
+    
+    <br>
+    <input type="text" id="Main_Text" maxlength="180">
+    <button onclick="Notice_Board()">글올리기</button>
+
+    <br>
+    <input type="text" id="Title_text">
+    <button onclick="Serch_Title()">검색</button>
+    
+    <br>
+    <button onclick="location.href='/'">메인화면</button>
+</body>

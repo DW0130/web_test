@@ -1,0 +1,31 @@
+<link href="{{ url_for('static', filename='test_login.css') }}" rel="stylesheet"><!-- css 적용-->
+
+<script type="text/javascript" src="/static/test_login.js"></script><!--js 적용-->
+<script type="text/javascript" src="/static/sweetalart2.js"></script><!--js 적용-->
+
+
+
+
+
+<head>
+    <title>회원가입</title>
+</head>
+
+<body style="position: absolute; left: 50%; margin-left: -150; text-align: center;">
+    <p>Welcome</p>
+    <tr><td>아이디</td></tr> <input type="text" id="New_ID" maxlength="15" style="margin-left: 16px;">
+    <br>
+
+    <tr><td>비밀번호</td></tr> <input type="text" id="New_PW" maxlength="20">
+    <br>
+
+    <tr><td>이름</td></tr> <input type="text" id="New_Name"style="margin-left: 33px;">
+    <br>
+
+    <tr><td>전화번호</td></tr> <input type="text" id="New_Phone">
+    <br>
+
+    <button onclick="Sign_in();" style="margin-left: 70px;">회원가입</button>
+    <button onclick="location.href='/'">메인화면</button>
+
+</body>

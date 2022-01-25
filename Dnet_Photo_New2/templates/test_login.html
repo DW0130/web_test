@@ -1,0 +1,26 @@
+확인용
+<link href="{{ url_for('static', filename='test_login.css') }}" rel="stylesheet"><!-- css 적용-->
+
+<script type="text/javascript" src="/static/test_login.js"></script><!--js 적용-->
+<script type="text/javascript" src="/static/sweetalart2.js"></script><!--js 적용-->
+
+
+
+
+
+<head>
+    <title>회원관리 시스템 로그인</title>
+</head>
+
+<body>
+    <p>LOGIN</p>
+    <input type="text" id="Login_ID">
+    <input type="password" id="Login_PW">
+    <BUtton onclick="Login()">로그인</BUtton>
+    <button onclick="location.href='/test_Serch_User'">계정찾기</button>
+    <button onclick="location.href='/test_Sign'">회원가입</button>
+    
+    <br>
+    <button onclick="location.href='/test_writing'">글쓰기</button>
+
+</body>

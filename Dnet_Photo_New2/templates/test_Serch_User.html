@@ -1,0 +1,17 @@
+<link href="{{ url_for('static', filename='test_login.css') }}" rel="stylesheet"><!-- css 적용-->
+
+<script type="text/javascript" src="/static/test_login.js"></script><!--js 적용-->
+<script type="text/javascript" src="/static/sweetalart2.js"></script><!--js 적용-->
+
+
+
+<title>사용자 계정 찾기</title>
+
+<body style="position: absolute; left: 50%; margin-left: -150; text-align: center;">
+    <p>Find an account</p>
+    <tr><td>이름</td></tr><input type="text" id="Name">
+    <br>
+    <tr><td>전화번호</td></tr><input type="text" id="Phone">
+    <button onclick="Serch_User()">계정 찾기</button>
+    <button onclick="location.href='/'">메인화면</button>
+</body>
